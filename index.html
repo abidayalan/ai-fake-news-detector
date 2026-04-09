@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Fake News Detector</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#1e293b;
+    padding:40px;
+    width:550px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+    text-align:center;
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+textarea{
+    width:100%;
+    height:130px;
+    border-radius:10px;
+    border:none;
+    padding:12px;
+    font-size:14px;
+    background:#0f172a;
+    color:white;
+}
+
+textarea:focus{
+    outline:2px solid #6366f1;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:10px;
+    background:#6366f1;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#4f46e5;
+    transform:scale(1.05);
+}
+
+.result{
+    margin-top:25px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.real{
+    color:#22c55e;
+}
+
+.fake{
+    color:#ef4444;
+}
+
+.footer{
+    margin-top:30px;
+    font-size:12px;
+    color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 AI Fake News Detector</h1>
+
+<p class="subtitle">
+Detect whether a news article is real or fake using Machine Learning
+</p>
+
+<form action="/predict" method="post">
+
+<textarea name="news" placeholder="Paste news article or headline here..."></textarea>
+
+<br>
+
+<button type="submit">Analyze News</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+Prediction:
+<span class="{% if result == 'REAL' %}real{% else %}fake{% endif %}">
+{{ result }}
+</span>
+</div>
+
+{% endif %}
+
+<div class="footer">
+AI Powered News Verification System
+</div>
+
+</div>
+
+</body>
+</html>
